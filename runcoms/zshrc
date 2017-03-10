@@ -11,3 +11,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# usage: vimmodified 1
+# to open all files modified from '1' commit ago as buffers in vim
+function vimmodified() {
+  git diff --name-only HEAD HEAD~$1 | xargs -o vim -p
+}
